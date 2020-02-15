@@ -34,12 +34,18 @@ var words = [
 // Random array item chosen from list
 var chosenWord = words[Math.floor(Math.random() * words.length)];
 
+// Array of correctly/incorrectly guessed words
+var rightWord = [];
+var wrongWord = [];
+
 // Array of underscores for use
 var underScore = [];
+
+// Testing choosing random word from array
 console.log(chosenWord)
 
-//Underscores created based on length of word
-// instead of typing function we can use =>
+// Underscores created based on length of word
+// Instead of typing function we can use =>
 var generateUnderscore = () => {
 
     // for loop to give blank spaces for length of chosen word
@@ -50,7 +56,28 @@ var generateUnderscore = () => {
 }
 console.log(generateUnderscore());
 
-
+// On keypress this gets the pressed key (the user guess) and translates it to each letter that is pressed instead of the straight keycode number
+document.addEventListener("keypress", (event) => {
+    var keycode = event.keyCode;
+    var alphabet = String.fromCharCode(keycode);   
+    // console.log(alphabet);
+    // Checks if user guess is right (reread on indexOf being -1 for clarity)
+    // if chosenWord IS right, push it to rightWord array
+    if (chosenWord.indexOf(alphabet) > -1) {
+    // console.log(true);
+    // Add to the rightWords array
+        rightWord.push(alphabet);
+        // Replace underscore with the right letter
+        underScore[chosenWord.indexOf(alphabet)] = alphabet;
+        //console.log(rightWord);
+        console.log(underScore);
+    }
+    // If not, adds to the wrongWords array
+        else {
+        wrongWord.push(alphabet);
+        //console.log(wrongWord);
+    }
+});
 
 
 
