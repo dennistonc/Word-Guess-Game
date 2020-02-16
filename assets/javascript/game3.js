@@ -17,24 +17,30 @@ var guessesLeft = 6;
 var underScores = [];
 var userGuesses = [];
 var randWord;
-var winCounter;
+var winCounter = 0;
 
 // Functions ===
 function reset() {
+    userWinReset = function(){
+        wrongLetter.reset();
+        guessesLeft.reset();
+        underScores.reset();
+        userGuesses.reset();
+        randWord.reset();
+    }
+
+    wrongLetter = [];
+    guessesLeft = 6;
+    underScores = [];
+    userGuesses = [];
+    randWord;
+
     randWord = words[Math.floor(Math.random() * words.length)];
     console.log(randWord);
     for (var n = 0; n < randWord.length; n++) {
         underScores.push("_");
     }
     document.getElementById("hangmanWordHere").innerHTML = underScores.join(" ");
-
-    userGuesses = 0;
-    guessesLeft = 6;
-    wrongLetter = [];
-    underScores = [];
-    test = false;
-    startGame();
-
 }
 
 function startGame() {
@@ -50,10 +56,6 @@ function startGame() {
     // This prints the underscores onto the page by using ID; joins the underscores with a space instead of comma default
     document.getElementById("hangmanWordHere").innerHTML = underScores.join(" ");
 
-    // Reset Game (everything back to default values)
-    wrongLetter = [];
-    guessesLeft = 6;
-
     // This is printing these on the screen, pushing to HTML
     //alreadyGuessed
     // Prints the var guessesLeft of 6 to HTML after numGuesses ID
@@ -61,16 +63,20 @@ function startGame() {
 
 }
 
+// Hint System -- can't figure
+
 // Outside Function for win/loss
 function winCounts () {
-    if  (winCounter === randWord.length) {
+    if  (guessesLeft === randWord.length) {
         alert("Winner!");
-        //document.getElementById("numWins").textContent = winCounter;
-        //startGame();
+        winCounter++;
+        document.getElementById("numWins").innerHTML = winCounter;
+        reset();
     }
+
     else if(guessesLeft === 0) {
-        alert("Loser!"); // this is where hangman photo can be uploaded?
-        //startGame();
+        alert("Loser!");
+        reset();
     }
 }
 
@@ -93,9 +99,7 @@ document.onkeyup = function(event) {
             underScores[n] = userGuesses;
             //console.log(underScores);
             document.getElementById("hangmanWordHere").innerHTML = underScores.join("");
-            winCounter++;
             winCounts();
-            reset();
             }
         }
     }
@@ -105,34 +109,17 @@ document.onkeyup = function(event) {
         // Each wrong letter takes away from number of guesses left which is 6
         guessesLeft--;
         document.getElementById("alreadyGuessed").innerHTML = wrongLetter.join(", ");
-        console.log(guessesLeft);
+        document.getElementById("numGuesses").innerHTML = guessesLeft;
+        //console.log(guessesLeft);
         console.log(wrongLetter);
         winCounts();
-        reset();
     }
+
+// Hangman Image -- can't figure
+
 }
 
 // Main ===
 
-// this is running the actual function up above
+// this is running the actual function way up above
 startGame();
-
-
-
-/* 
-  
-5. Press any key to get started!
-
-6. Wins: (# of times user guessed the word correctly).
-
-   * If the word is `madonna`, display it like this when the game starts: `_ _ _ _ _ _ _`.
-
-   * As the user guesses the correct letters, reveal them: `m a d o _  _ a`.
-
-7. Number of Guesses Remaining: (# of guesses remaining for the user).
-
-8. Letters Already Guessed: (Letters the user has guessed, displayed like `L Z Y H`).
-
-9. After the user wins/loses the game should automatically choose another word and make the user play it.
-
-*/
