@@ -6,7 +6,6 @@
         <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="./assets/javascript/game.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
     </head>
 
@@ -26,32 +25,37 @@
                         Press any key to get started!
                     </h3>
                 <br>
-                    <p id="numWins">
-                        Wins:
-                    </p>
+                    <div>
+                        <p id="hangmanWordHere"></p>
+                    </div>
                 <br>
-                    <p id="hangmanWordHere">cabbage</p>
+                    <div>
+                        <p>Number of Guesses Remaining: </p>
+                        <p id="numGuesses"></p>
+                    </div>
                 <br>
-                    <p id="numGuesses">
-                        Number of Guesses Remaining:
-                    </p>
+                    <div>
+                        <p>Letters Already Guessed: </p>
+                        <p id="alreadyGuessed"></p>
+                    </div>
                 <br>
-                    <p id="alreadyGuessed">
-                        Letters Already Guessed:
-                    </p>
+                    <div>
+                        <p>Wins: </p>
+                        <p id="numWins"></p>
+                    </div>
 
-                </div>
-                </td>
-
-                <td>
-                <div class="container" id="stickfigure">
-                    <img src="assets/images/Button2.jpg">
                 </div>
                 </td>
                 </tr>
                 </table>
+
+                <div class="container" id="stickfigure">
+                    <img src="assets/images/hangman0.png">
+                </div>
             </div>
         </div>
+
+        <script src="./assets/javascript/game3.js"></script>
 
     </body>
 </html>

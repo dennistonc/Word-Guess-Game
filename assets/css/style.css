@@ -9,7 +9,7 @@ img {
   }
 
 body {
-    background-color: #000000;
+    background-color: #ff0000;
     color: #ffffff;
     font-family: 'Quicksand', sans-serif;
     font-size: 18px;
@@ -32,6 +32,10 @@ h3 {
     padding: 20px;
 }
 
+#stickfigure {
+  float: right;
+  position: relative;
+}
 
 /* nav {
     font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
