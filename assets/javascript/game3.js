@@ -66,8 +66,9 @@ function startGame() {
 // Hint System -- can't figure
 
 // Outside Function for win/loss
+// TO DO: Compare string in randword to string in userGuess and have a condition to compare so u don't have to enter letters in order
 function winCounts () {
-    if  (guessesLeft === randWord.length) {
+    if  (userGuesses === randWord.length) {
         alert("Winner!");
         winCounter++;
         document.getElementById("numWins").innerHTML = winCounter;
@@ -116,6 +117,7 @@ document.onkeyup = function(event) {
     }
 
 // Hangman Image -- can't figure
+// document.getElementById("stickfigure").src = "../assets/images/hangman6.png";
 
 }
 
